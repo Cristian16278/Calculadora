@@ -68,9 +68,6 @@ namespace Calculadora
                         resultado = valor1 / valor2;
                     }
                     break;
-                case Operacion.Modulo:
-                    resultado = valor1 % valor2;
-                    break;
             }
             return resultado;
         }
@@ -179,8 +176,9 @@ namespace Calculadora
 
         private void btnPorcentaje_Click(object sender, EventArgs e)
         {
-            operacion = Operacion.Modulo;
-            obtenerValor("%");
+            valor2 = Convert.ToDouble(txtCajaResultado.Text);
+            double resultado = Porcentaje(valor2);
+            txtCajaResultado.Text = resultado.ToString();
         }
 
         private void btnBorrar_Click(object sender, EventArgs e)
@@ -217,6 +215,21 @@ namespace Calculadora
                 return;
             }
             txtCajaResultado.Text += ".";
+        }
+
+        private double Porcentaje(double porcentaje)
+        {
+            double resultado = 0;
+            switch (operacion)
+            {
+                case Operacion.Suma:
+                    resultado = valor1 + (valor1 * porcentaje / 100);
+                    break;
+                case Operacion.resta:
+                    resultado = valor1 - (valor1 * porcentaje / 100);
+                    break;
+            }
+            return resultado;
         }
     }
 }
