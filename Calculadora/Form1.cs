@@ -144,7 +144,7 @@ namespace Calculadora
 
         private void btnResultado_Click(object sender, EventArgs e)
         {
-            if(valor2 == 0 && numeroLeido)
+            if((valor2 == 0 || valor2 != 0) && numeroLeido)
             {
                 valor2 = Convert.ToDouble(txtCajaResultado.Text);
                 lblHistorial.Text += valor2 + "=";
@@ -177,8 +177,8 @@ namespace Calculadora
         private void btnPorcentaje_Click(object sender, EventArgs e)
         {
             valor2 = Convert.ToDouble(txtCajaResultado.Text);
-            double resultado = Porcentaje(valor2);
-            txtCajaResultado.Text = resultado.ToString();
+            Porcentaje(valor2);
+            txtCajaResultado.Text = valor2.ToString();
         }
 
         private void btnBorrar_Click(object sender, EventArgs e)
@@ -217,19 +217,9 @@ namespace Calculadora
             txtCajaResultado.Text += ".";
         }
 
-        private double Porcentaje(double porcentaje)
+        private void Porcentaje(double porcentaje)
         {
-            double resultado = 0;
-            switch (operacion)
-            {
-                case Operacion.Suma:
-                    resultado = valor1 + (valor1 * porcentaje / 100);
-                    break;
-                case Operacion.resta:
-                    resultado = valor1 - (valor1 * porcentaje / 100);
-                    break;
-            }
-            return resultado;
+            valor2 = valor1 * porcentaje / 100;
         }
     }
 }
