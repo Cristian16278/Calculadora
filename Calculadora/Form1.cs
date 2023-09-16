@@ -147,7 +147,7 @@ namespace Calculadora
             if((valor2 == 0 || valor2 != 0) && numeroLeido)
             {
                 valor2 = Convert.ToDouble(txtCajaResultado.Text);
-                lblHistorial.Text += valor2 + "=";
+                lblHistorial.Text += txtCajaResultado.Text + "=";
                 double resultado = EjecutarOperacion();
                 valor1 = 0;
                 valor2 = 0;
@@ -174,7 +174,7 @@ namespace Calculadora
             obtenerValor("÷");
         }
 
-        private void btnPorcentaje_Click(object sender, EventArgs e)
+        private void btnPorcentaje_Click(object sender, EventArgs e)//porcentaje<----------
         {
             valor2 = Convert.ToDouble(txtCajaResultado.Text);
             Porcentaje(valor2);
@@ -217,7 +217,7 @@ namespace Calculadora
             txtCajaResultado.Text += ".";
         }
 
-        private void Porcentaje(double porcentaje)
+        private void Porcentaje(double porcentaje)//<---------------------------
         {
             valor2 = valor1 * porcentaje / 100;
         }
